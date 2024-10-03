@@ -1,5 +1,5 @@
 --[[
-
+-- 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -102,7 +102,11 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
+<<<<<<< HEAD
 -- vim.o.relativenumber = true
+=======
+vim.opt.relativenumber = true
+>>>>>>> 7bb8b8a (turn on reletive line numbers)
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -687,7 +691,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        gopls = {},
+        -- gopls = {},
         pyright = {
           filetypes = { 'python' },
         },
