@@ -229,6 +229,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  'github/copilot.vim',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -254,7 +255,6 @@ require('lazy').setup({
       },
     },
   },
-
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -790,19 +790,29 @@ require('lazy').setup({
     end,
   },
 
+  -- {
+  --   'Mofiqul/dracula.nvim',
+  --   priority = 1000, -- Ensures theme loads early
+  --   config = function()
+  --     vim.opt.background = 'dark'
+  --     vim.cmd.colorscheme 'dracula'
+  --   end,
+  -- },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    -- 'folke/tokyonight.nvim',
+    'Mofiqul/dracula.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
-
+      --   vim.cmd.colorscheme 'tokyonight-night'
+      vim.opt.background = 'dark'
+      vim.cmd.colorscheme 'dracula'
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
