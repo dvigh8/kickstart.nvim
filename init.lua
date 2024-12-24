@@ -92,7 +92,6 @@ vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
-
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -245,7 +244,13 @@ require('lazy').setup({
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
+  {
+    'glacambre/firenvim',
+    build = ':call firenvim#install(0)',
+    config = function()
+      vim.g.firenvim_config = { localSettings = { ['.*'] = { takeover = 'never' } } }
+    end,
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
