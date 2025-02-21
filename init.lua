@@ -307,7 +307,21 @@ require('lazy').setup({
       { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
   },
-
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
+    build = 'make tiktoken', -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+    keys = {
+      { '<leader>cc', '<cmd>CopilotChatToggle<cr>', desc = 'Copilot Chat' },
+    },
+  },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
