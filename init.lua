@@ -229,6 +229,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'github/copilot.vim',
+  'tpope/vim-fugitive', -- Git commands in Neovim
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   {
     'glacambre/firenvim',
