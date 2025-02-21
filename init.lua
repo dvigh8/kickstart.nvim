@@ -243,6 +243,7 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
+  'tpope/vim-fugitive', -- Git commands in Neovim
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   {
     'glacambre/firenvim',
