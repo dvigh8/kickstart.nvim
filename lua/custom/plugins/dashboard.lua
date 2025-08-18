@@ -3,7 +3,7 @@ return {
   event = 'VimEnter',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'folke/persistence.nvim', -- Add persistence as dependency
+    'rmagatti/auto-session', -- Changed from persistence.nvim
     'nvim-telescope/telescope.nvim',
   },
   config = function()
@@ -28,27 +28,36 @@ return {
             desc = 'Restore Session',
             group = 'DiagnosticInfo',
             action = function()
-              require('persistence').load()
+              require('auto-session').RestoreSession()
             end,
             key = 's',
           },
           {
             icon = ' ',
-            desc = 'Last Session',
+            desc = 'Save Session',
             group = '@property',
             action = function()
-              require('persistence').load { last = true }
+              require('auto-session').SaveSession()
             end,
-            key = 'l',
+            key = 'S',
           },
           {
             icon = '󰁯 ',
             desc = 'Select Session',
             group = 'DiagnosticHint',
             action = function()
-              require('persistence').select()
+              require('auto-session.session-lens').search_session()
             end,
-            key = 'S',
+            key = 'l',
+          },
+          {
+            icon = '󰆴 ',
+            desc = 'Delete Session',
+            group = 'DiagnosticWarn',
+            action = function()
+              require('auto-session').DeleteSession()
+            end,
+            key = 'd',
           },
           {
             icon = ' ',
