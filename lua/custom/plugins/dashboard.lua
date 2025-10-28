@@ -46,7 +46,7 @@ return {
             desc = 'Select Session',
             group = 'DiagnosticHint',
             action = function()
-              require('auto-session.session-lens').search_session()
+              require('auto-session').search_session()
             end,
             key = 'l',
           },

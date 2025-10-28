@@ -56,13 +56,7 @@ return {
     })
 
     -- Telescope integration keymaps
-    vim.keymap.set('n', '<leader>ts', require('auto-session.session-lens').search_session, {
-      desc = 'Find sessions (Telescope)',
-    })
-
-    -- Alternative: if you prefer using Telescope command
-    vim.keymap.set('n', '<leader>tS', '<cmd>Telescope session-lens<CR>', {
-      desc = 'Find sessions (Telescope command)',
-    })
+    vim.keymap.set('n', '<leader>ts', '<cmd>AutoSession search<CR>', { desc = 'Find sessions' })
+    vim.keymap.set('n', '<leader>tS', '<cmd>AutoSession search<CR>', { desc = 'Find sessions (cmd)' })
   end,
 }
