@@ -39,6 +39,5 @@ return {
 
     -- Telescope integration keymaps
     vim.keymap.set('n', '<leader>ts', '<cmd>AutoSession search<CR>', { desc = 'Find sessions' })
-    vim.keymap.set('n', '<leader>tS', '<cmd>AutoSession search<CR>', { desc = 'Find sessions (cmd)' })
   end,
 }
