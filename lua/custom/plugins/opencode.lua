@@ -15,6 +15,24 @@ return {
     -- Required for `opts.events.reload`.
     vim.o.autoread = true
 
+    -- Trigger checktime more frequently for reliable auto-reload
+    vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold' }, {
+      group = vim.api.nvim_create_augroup('opencode_autoreload', { clear = true }),
+      callback = function()
+        if vim.fn.getcmdwintype() == '' then
+          vim.cmd 'checktime'
+        end
+      end,
+    })
+
+    -- Notify when a file is reloaded externally
+    vim.api.nvim_create_autocmd('FileChangedShellPost', {
+      group = vim.api.nvim_create_augroup('opencode_reload_notify', { clear = true }),
+      callback = function()
+        vim.notify('File reloaded (changed externally)', vim.log.levels.INFO)
+      end,
+    })
+
     -- Recommended/example keymaps.
     vim.keymap.set({ 'n', 'x' }, '<C-a>', function()
       require('opencode').ask('@this: ', { submit = true })
