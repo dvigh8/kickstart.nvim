@@ -46,7 +46,7 @@ return {
             desc = 'Select Session',
             group = 'DiagnosticHint',
             action = function()
-              require('auto-session').search_session()
+              require('auto-session.pickers').open_session_picker()
             end,
             key = 'l',
           },
