@@ -189,13 +189,19 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows (handled by smart-splits.nvim for Zellij integration)
+--  Use CTRL+<hjkl> to switch between windows (mapped to Ctrl w hjkl behavior)
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+-- Map Ctrl hjkl to window navigation (same as Ctrl w hjkl)
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to down window' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to up window' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -260,26 +266,7 @@ require('lazy').setup({
   'tpope/vim-fugitive', -- Git commands in Neovim
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  {
-    'mrjones2014/smart-splits.nvim',
-    config = function()
-      require('smart-splits').setup({
-        ignored_filetypes = { 'NvimTree', 'neo-tree' },
-      })
-      vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left, { desc = 'Move to left split/pane' })
-      vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down, { desc = 'Move to lower split/pane' })
-      vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up, { desc = 'Move to upper split/pane' })
-      vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right, { desc = 'Move to right split/pane' })
-      vim.keymap.set('t', '<C-h>', require('smart-splits').move_cursor_left, { desc = 'Move to left split/pane' })
-      vim.keymap.set('t', '<C-j>', require('smart-splits').move_cursor_down, { desc = 'Move to lower split/pane' })
-      vim.keymap.set('t', '<C-k>', require('smart-splits').move_cursor_up, { desc = 'Move to upper split/pane' })
-      vim.keymap.set('t', '<C-l>', require('smart-splits').move_cursor_right, { desc = 'Move to right split/pane' })
-      vim.keymap.set('n', '<C-S-h>', require('smart-splits').resize_left, { desc = 'Resize split left' })
-      vim.keymap.set('n', '<C-S-j>', require('smart-splits').resize_down, { desc = 'Resize split down' })
-      vim.keymap.set('n', '<C-S-k>', require('smart-splits').resize_up, { desc = 'Resize split up' })
-      vim.keymap.set('n', '<C-S-l>', require('smart-splits').resize_right, { desc = 'Resize split right' })
-    end,
-  },
+  
   {
     'glacambre/firenvim',
     build = ':call firenvim#install(0)',
